@@ -31,12 +31,13 @@ def compute(input_string: str):
         children = {c[1]: c[0] for c in re.findall(r'(?:(\d+) (.+?)\sbags*(?:\,|\.))+', line)}
 
         if parent_color in bags:
-            bags[parent_color] = {**bags[parent_color], ** children}
+            bags[parent_color] = {**bags[parent_color], **children}
         else:
             bags[parent_color] = children
 
     count = looper(bags, "shiny gold")
     return len(count)
+
 
 @pytest.mark.parametrize("expected", [4])
 def test_results(expected):
